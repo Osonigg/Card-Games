@@ -74,14 +74,28 @@ export function Sidebar({ screen, onNewGame, onStatsClick, onExit, onHomeClick, 
         </>
       ) : (
         <nav className="flex-1 space-y-1">
-          <button onClick={onHomeClick} className="w-full flex items-center gap-4 py-3 px-4 text-outline hover:text-on-surface hover:bg-surface-container-high/50 rounded-xl transition-colors">
-            <BarChart2 size={18} />
-            <span className="text-[11px] uppercase tracking-widest">{tx.home}</span>
-          </button>
-          <button onClick={onStatsClick} className="w-full flex items-center gap-4 py-3 px-4 text-outline hover:text-on-surface hover:bg-surface-container-high/50 rounded-xl transition-colors">
-            <TrendingUp size={18} />
-            <span className="text-[11px] uppercase tracking-widest">{tx.gameStats}</span>
-          </button>
+          <button 
+          onClick={onHomeClick} 
+          className={`w-full flex items-center gap-4 py-3 px-4 rounded-xl transition-colors font-semibold ${
+            screen === 'HOME' 
+              ? 'bg-primary/20 text-primary' 
+              : 'text-outline hover:text-on-surface hover:bg-surface-container-high/50'
+          }`}
+        >
+          <BarChart2 size={18} />
+          <span className="text-[11px] uppercase tracking-widest">{tx.home}</span>
+        </button>
+        <button 
+          onClick={onStatsClick} 
+          className={`w-full flex items-center gap-4 py-3 px-4 rounded-xl transition-colors font-semibold ${
+            screen === 'STATS' 
+              ? 'bg-primary/20 text-primary' 
+              : 'text-outline hover:text-on-surface hover:bg-surface-container-high/50'
+          }`}
+        >
+          <TrendingUp size={18} />
+          <span className="text-[11px] uppercase tracking-widest">{tx.gameStats}</span>
+        </button>
         </nav>
       )}
 
