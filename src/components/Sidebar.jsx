@@ -18,11 +18,11 @@ export function Sidebar({ screen, onNewGame, onStatsClick, onExit, onHomeClick, 
       {/* Backdrop for mobile */}
       {isOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity"
+          className="fixed inset-0 bg-black/50 z-[55] md:hidden transition-opacity"
           onClick={onClose}
         />
       )}
-      <aside className={`fixed left-0 top-0 h-full w-75 bg-surface-container-lowest/95 md:bg-surface-container-lowest/40 backdrop-blur-3xl border-r border-outline-variant/20 flex flex-col py-8 px-6 overflow-y-auto z-50 transition-transform duration-300 md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+      <aside className={`fixed left-0 top-0 h-full w-75 bg-surface-container-lowest/95 md:bg-surface-container-lowest/40 backdrop-blur-3xl border-r border-outline-variant/20 flex flex-col py-8 px-6 overflow-y-auto z-[60] transition-transform duration-300 md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="mb-12 flex items-center gap-3">
         <div className="w-10 h-10 rounded-xl bg-linear-to-br from-primary to-blue-600 shadow-lg shadow-primary/20 flex items-center justify-center text-white">
           <Compass size={20} />

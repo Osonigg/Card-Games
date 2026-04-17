@@ -78,7 +78,7 @@ export default function App() {
           onMenuClick={() => setIsMobileMenuOpen(true)}
         />
 
-        <div className="flex-1 flex flex-col md:ml-75 min-h-screen pt-16">
+        <div className="flex-1 flex flex-col md:ml-75 min-h-screen pt-16 pb-24 md:pb-0">
           {screen === 'HOME' && (
             <HomeScreen
               onStart={startGame}
@@ -125,7 +125,14 @@ export default function App() {
         />
       )}
 
-      <BottomNav lang={lang} />
+      <BottomNav 
+        lang={lang} 
+        screen={screen}
+        onPlay={() => setScreen('HOME')}
+        onStats={() => setScreen('STATS')}
+        onSettings={() => setIsMobileMenuOpen(true)}
+        isMenuOpen={isMobileMenuOpen}
+      />
     </div>
   );
 }
