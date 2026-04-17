@@ -111,7 +111,7 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                   ) : (
                     <>
                       <Compass size={40} className="text-blue-500/30 group-hover:text-blue-500/50 transition-colors" />
-           Card-Games\src\components\screens\           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15)_0%,transparent_100%)]" />
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15)_0%,transparent_100%)]" />
                     </>
                   )}
                 </div>
