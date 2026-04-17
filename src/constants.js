@@ -4,15 +4,15 @@ import {
 } from 'lucide-react';
 
 export const SYMBOL_POOL = [
-  { id: 'mouse',     img: '/mouse.jpeg' },
-  { id: 'compass',   Icon: Compass   },
-  { id: 'building',  Icon: Building2 },
-  { id: 'layers',    Icon: Layers    },
-  { id: 'home',      Icon: Home      },
-  { id: 'briefcase', Icon: Briefcase },
-  { id: 'armchair',  Icon: Armchair  },
-  { id: 'bed',       Icon: BedDouble },
-  { id: 'monitor',   Icon: Monitor   },
+  { id: 'mouse',     img: '/mouse.png' },
+  { id: 'Audifonos',     img: '/Audifonos.png' },
+  { id: 'Bocinas',     img: '/Bocinas.png' },
+  { id: 'CPU',     img: '/CPU.png' },
+  { id: 'Escritorio',     img: '/Escritorio .png' },
+  { id: 'Silla',     img: '/Silla.png' },
+  { id: 'Teclado',     img: '/Teclado.png' },
+  { id: 'Monitor',     img: '/Monitor.png' },
+  
 ];
 
 export const DIFFICULTY_CONFIG = {
