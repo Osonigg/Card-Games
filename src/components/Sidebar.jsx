@@ -73,10 +73,6 @@ export function Sidebar({ screen, onNewGame, onExit, metrics, difficulty, lang }
             <TrendingUp size={18} />
             <span className="text-[11px] uppercase tracking-[0.1em]">{tx.gameStats}</span>
           </button>
-          <button className="w-full flex items-center gap-4 py-3 px-4 text-outline hover:text-on-surface hover:bg-surface-container-high/50 rounded-xl transition-colors">
-            <Settings size={18} />
-            <span className="text-[11px] uppercase tracking-[0.1em]">{tx.settings}</span>
-          </button>
         </nav>
       )}
 
@@ -90,10 +86,12 @@ export function Sidebar({ screen, onNewGame, onExit, metrics, difficulty, lang }
             </div>
           </button>
         )}
+        {screen !== 'HOME' && (
         <button onClick={onExit} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-outline hover:text-error hover:bg-error/10 transition-colors font-semibold">
-          <LogOut size={16} />
-          <span className="text-[11px] uppercase tracking-wider">{tx.exit}</span>
+        <LogOut size={16} />
+        <span className="text-[11px] uppercase tracking-wider">{tx.exit}</span>
         </button>
+        )}
       </div>
     </aside>
   );
