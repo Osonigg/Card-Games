@@ -74,8 +74,8 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
         ))}
       </div>
 
-      <div className="w-full glass-panel p-4 sm:p-6 md:p-10 rounded-3xl flex items-center justify-center min-h-[400px] mb-8 md:mb-0">
-        <div className={`grid ${gridClass} gap-4 md:gap-6 w-full max-w-[900px] mx-auto`}>
+      <div className="w-full glass-panel p-4 sm:p-6 md:p-10 rounded-3xl flex items-center justify-center min-h-100 mb-8 md:mb-0">
+        <div className={`grid ${gridClass} gap-4 md:gap-6 w-full max-w-225 mx-auto`}>
           {state.cards.map((card) => {
             const isVisible = card.state === 'flipped' || card.state === 'matched' || card.state === 'incorrect';
             const isMatched  = card.state === 'matched';
@@ -86,20 +86,28 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                 key={card.uid}
                 disabled={state.locked || card.state !== 'hidden'}
                 onClick={() => !state.locked && flipCard(card.uid)}
-                className={`aspect-square sm:min-h-[140px] md:min-h-[180px] rounded-2xl transition-all duration-300 relative overflow-hidden group
+                className={`aspect-square sm:min-h-35 md:min-h-45 rounded-2xl transition-all duration-300 relative overflow-hidden group
                   ${isMatched
-                    ? 'bg-gradient-to-br from-accent to-orange-600 shadow-lg shadow-accent/20 ring-1 ring-white/20'
+                    ? 'bg-linear-to-br from-accent to-orange-600 shadow-lg shadow-accent/20 ring-1 ring-white/20'
                     : isFlipped
-                      ? 'bg-gradient-to-br from-primary to-blue-700 shadow-xl ring-1 ring-white/20'
+                      ? 'bg-linear-to-br from-primary to-blue-700 shadow-xl ring-1 ring-white/20'
                       : 'bg-blue-50/80 dark:bg-blue-950/40 border-2 border-blue-400/60 dark:border-blue-500/50 hover:border-blue-500 hover:shadow-[0_8px_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-pointer'
                   }`}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
                   {isVisible ? (
-                    <card.Icon
-                      size={48}
-                      className={`drop-shadow-md ${isMatched ? 'text-white fill-current' : 'text-white'}`}
-                    />
+                    card.img ? (
+                      <img
+                        src={card.img}
+                        alt={card.id}
+                        className="absolute inset-2 w-[calc(100%-1rem)] h-[calc(100%-1rem)] object-contain drop-shadow-md"
+                      />
+                    ) : (
+                      <card.Icon
+                        size={48}
+                        className={`drop-shadow-md ${isMatched ? 'text-white fill-current' : 'text-white'}`}
+                      />
+                    )
                   ) : (
                     <>
                       <Compass size={40} className="text-blue-500/30 group-hover:text-blue-500/50 transition-colors" />
@@ -114,7 +122,7 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
       </div>
 
       <div className="hidden md:flex mt-8 glass-panel p-6 rounded-2xl items-center gap-4 w-full relative overflow-hidden">
-        <div className="p-3 bg-gradient-to-br from-accent to-orange-500 rounded-xl shadow-lg shadow-accent/20">
+        <div className="p-3 bg-linear-to-br from-accent to-orange-500 rounded-xl shadow-lg shadow-accent/20">
           <Lightbulb size={20} className="text-white" />
         </div>
         <div>

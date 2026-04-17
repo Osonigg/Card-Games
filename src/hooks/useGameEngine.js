@@ -17,6 +17,7 @@ function buildDeck(difficulty) {
     uid: `${s.id}-${i}`,
     symbolId: s.id,
     Icon: s.Icon,
+    img: s.img,
     state: 'hidden',
   })));
 }

@@ -14,13 +14,13 @@ export function VictoryScreen({ metrics, onRestart, onHome, lang }) {
       </div>
 
       <div className="max-w-3xl w-full glass-panel rounded-[2.5rem] p-8 md:p-14 relative overflow-hidden">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/50 to-transparent" />
 
         <div className="text-center mb-16 relative z-10">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-accent to-orange-500 rounded-[2rem] text-white mb-8 shadow-2xl shadow-accent/30 rotate-12 hover:rotate-0 transition-transform duration-500">
+          <div className="inline-flex items-center justify-center w-24 h-24 bg-linear-to-br from-accent to-orange-500 rounded-4xl text-white mb-8 shadow-2xl shadow-accent/30 rotate-12 hover:rotate-0 transition-transform duration-500">
             <Trophy size={48} className="fill-current" />
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-primary to-blue-400 mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-transparent bg-clip-text bg-linear-to-br from-primary to-blue-400 mb-4">
             {tx.victoryTitle}
           </h1>
           <p className="text-outline font-bold tracking-[0.2em] uppercase text-xs">{tx.victorySub}</p>
@@ -28,22 +28,22 @@ export function VictoryScreen({ metrics, onRestart, onHome, lang }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 relative z-10 max-w-2xl mx-auto w-full">
           <div className="bg-surface-container-lowest/50 backdrop-blur-md p-8 rounded-3xl flex flex-col items-center ring-1 ring-inset ring-outline-variant/30">
-            <span className="text-outline mb-3 uppercase tracking-[0.1em] text-[10px] font-bold">{tx.totalTime}</span>
+            <span className="text-outline mb-3 uppercase tracking-widest text-[10px] font-bold">{tx.totalTime}</span>
             <span className="text-3xl md:text-4xl font-light tabular-nums tracking-tighter font-mono">{fmt(metrics.timeElapsed)}</span>
           </div>
-          <div className="bg-gradient-to-br from-primary to-blue-800 p-8 rounded-3xl flex flex-col items-center text-white md:scale-[1.03] shadow-2xl shadow-primary/20 ring-1 ring-white/20">
-            <span className="text-blue-200 mb-3 uppercase tracking-[0.1em] text-[10px] font-bold">{tx.totalMoves}</span>
+          <div className="bg-linear-to-br from-primary to-blue-800 p-8 rounded-3xl flex flex-col items-center text-white md:scale-[1.03] shadow-2xl shadow-primary/20 ring-1 ring-white/20">
+            <span className="text-blue-200 mb-3 uppercase tracking-widest text-[10px] font-bold">{tx.totalMoves}</span>
             <span className="text-5xl md:text-6xl font-bold tracking-tighter">{metrics.moves}</span>
           </div>
           <div className="bg-surface-container-lowest/50 backdrop-blur-md p-8 rounded-3xl flex flex-col items-center ring-1 ring-inset ring-outline-variant/30">
-            <span className="text-outline mb-3 uppercase tracking-[0.1em] text-[10px] font-bold">{tx.pairsFound}</span>
+            <span className="text-outline mb-3 uppercase tracking-widest text-[10px] font-bold">{tx.pairsFound}</span>
             <span className="text-3xl md:text-4xl font-light tracking-tighter">{metrics.pairsFound}</span>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-6 relative z-10">
           <button onClick={onRestart} className="group relative w-full max-w-sm h-16 rounded-2xl text-sm font-bold uppercase tracking-[0.15em] flex items-center justify-center gap-3 overflow-hidden shadow-xl shadow-accent/20 active:scale-95 transition-all">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent to-orange-500 group-hover:opacity-90 transition-opacity" />
+            <div className="absolute inset-0 bg-linear-to-r from-accent to-orange-500 group-hover:opacity-90 transition-opacity" />
             <span className="relative z-10 text-white flex items-center gap-3">
               <RotateCcw size={18} />
               {tx.playAgain}

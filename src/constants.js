@@ -4,6 +4,7 @@ import {
 } from 'lucide-react';
 
 export const SYMBOL_POOL = [
+  { id: 'mouse',     img: '/mouse.jpeg' },
   { id: 'compass',   Icon: Compass   },
   { id: 'building',  Icon: Building2 },
   { id: 'layers',    Icon: Layers    },
