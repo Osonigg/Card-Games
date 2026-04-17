@@ -6,6 +6,7 @@ import { HomeScreen } from './components/screens/HomeScreen.jsx';
 import { GameScreen } from './components/screens/GameScreen.jsx';
 import { VictoryScreen } from './components/screens/VictoryScreen.jsx';
 import { PauseModal } from './components/PauseModal.jsx';
+import { StatsScreen } from './components/screens/StatsScreen.jsx';
 
 export default function App() {
   const [screen, setScreen]       = useState('HOME');
@@ -14,6 +15,7 @@ export default function App() {
   const [sessionId, setSessionId] = useState('ARCH-001');
   const [isDark, setIsDark]       = useState(false);
   const [lang, setLang]           = useState('es');
+  const [completedGames, setCompletedGames] = useState([]);
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
@@ -26,6 +28,15 @@ export default function App() {
 
   const handleVictory = (finalMetrics) => {
     setMetrics(finalMetrics);
+    setCompletedGames([...completedGames,
+    {
+      id: completedGames.length + 1,
+      difficulty: difficulty,
+      timeElapsed: finalMetrics.timeElapsed,
+      moves: finalMetrics.moves,
+      timestamp: new Date()
+    }
+  ]);
     setScreen('VICTORY');
   };
 
@@ -40,8 +51,10 @@ export default function App() {
 
       <div className="flex w-full relative z-10">
         <Sidebar
+          completedGames={completedGames}
           screen={screen}
           onNewGame={startGame}
+          onStatsClick={() => setScreen('STATS')}
           onExit={() => setScreen('HOME')}
           metrics={metrics}
           difficulty={difficulty}
@@ -83,6 +96,13 @@ export default function App() {
               onHome={() => setScreen('HOME')}
               lang={lang}
             />
+          )}
+
+          {screen === 'STATS' && (
+          <StatsScreen
+          completedGames={completedGames}
+          onBack={() => setScreen('HOME')}
+          lang={lang}/>
           )}
         </div>
       </div>

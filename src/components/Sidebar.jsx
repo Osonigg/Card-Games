@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 import { t } from '../i18n.js';
 
-export function Sidebar({ screen, onNewGame, onExit, metrics, difficulty, lang }) {
+export function Sidebar({ screen, onNewGame, onStatsClick, onExit, metrics, difficulty, lang }) {
   const tx = t[lang];
   const isPlaying = screen === 'PLAYING' || screen === 'PAUSED';
   const diffLabel = difficulty === 'EASY' ? tx.easy : difficulty === 'MEDIUM' ? tx.medium : tx.hard;
@@ -69,7 +69,7 @@ export function Sidebar({ screen, onNewGame, onExit, metrics, difficulty, lang }
             <BarChart2 size={18} />
             <span className="text-[11px] uppercase tracking-[0.1em]">{tx.currentProgress}</span>
           </button>
-          <button className="w-full flex items-center gap-4 py-3 px-4 text-outline hover:text-on-surface hover:bg-surface-container-high/50 rounded-xl transition-colors">
+          <button onClick={onStatsClick} className="w-full flex items-center gap-4 py-3 px-4 text-outline hover:text-on-surface hover:bg-surface-container-high/50 rounded-xl transition-colors">
             <TrendingUp size={18} />
             <span className="text-[11px] uppercase tracking-[0.1em]">{tx.gameStats}</span>
           </button>

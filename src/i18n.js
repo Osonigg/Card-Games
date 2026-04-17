@@ -35,6 +35,9 @@ export const t = {
     archMode: 'Modo Arquitecto',
     exitMenu: 'Salir al Menú',
     playTab: 'Jugar',
+    back: 'Atrás',
+    game: 'Partida',
+    noGamesPlayedYet: 'No hay partidas jugadas',
   },
   en: {
     appTitle: 'Architect Memory',
@@ -72,5 +75,8 @@ export const t = {
     archMode: 'Architect Mode',
     exitMenu: 'Exit to Menu',
     playTab: 'Play',
+    back: 'Back',
+    game: 'Game',
+    noGamesPlayedYet: 'No games played yet',
   },
 };
