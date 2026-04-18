@@ -5,7 +5,7 @@ import { useTimer } from '../../hooks/useTimer.js';
 import { DIFFICULTY_CONFIG } from '../../constants.js';
 import { t } from '../../i18n.js';
 
-const COLS_MAP = { 3: 'grid-cols-3', 4: 'grid-cols-4', 5: 'grid-cols-5' };
+const COLS_MAP = { 3: 'grid-cols-3', 4: 'grid-cols-4', 5: 'grid-cols-5', 6: 'grid-cols-6' };
 
 export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
   const tx = t[lang];
@@ -38,13 +38,17 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
     if (state.status !== 'completed') completedRef.current = false;
   }, [state.status]);
 
-  const { cols } = DIFFICULTY_CONFIG[difficulty] ?? { cols: 4 };
-  const gridClass = COLS_MAP[cols] ?? 'grid-cols-4';
+  const { cols } = DIFFICULTY_CONFIG[difficulty] ?? { cols: 6 };
+  const gridClass = COLS_MAP[cols] ?? 'grid-cols-6';
 
   const fmt = (s) =>
     `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 
-  const diffLabel = difficulty === 'EASY' ? tx.easy : difficulty === 'MEDIUM' ? tx.medium : tx.hard;
+  const diffLabel = 
+    difficulty === 'EASY' ? tx.easy : 
+    difficulty === 'MEDIUM' ? tx.medium :
+    difficulty === 'HARD' ? tx.hard : 
+    difficulty === 'VERYHARD' ? tx.veryHard : tx.extreme; 
 
   return (
     <main className="flex-1 w-full max-w-4xl mx-auto flex flex-col items-center px-4 sm:px-6 py-8 md:py-12 mb-24 md:mb-0 relative">
@@ -86,13 +90,14 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                 key={card.uid}
                 disabled={state.locked || card.state !== 'hidden'}
                 onClick={() => !state.locked && flipCard(card.uid)}
-                className={`aspect-square sm:min-h-35 md:min-h-45 rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden group
+                className={`aspect-square rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden group
+                  ${difficulty === 'EXTREME' ? 'min-h-[60px] sm:min-h-[80px]' : 'min-h-[100px] sm:min-h-[120px]'}
                   ${isMatched
                     ? 'bg-linear-to-br from-accent to-orange-600 shadow-lg shadow-accent/20 ring-1 ring-white/20'
                     : isFlipped
-                      ? 'bg-linear-to-br from-primary to-blue-700 shadow-xl ring-1 ring-white/20'
-                      : 'bg-blue-50/80 dark:bg-blue-950/40 border-2 border-blue-400/60 dark:border-blue-500/50 hover:border-blue-500 hover:shadow-[0_8px_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-pointer'
-                  }`}
+                    ? 'bg-linear-to-br from-primary to-blue-700 shadow-xl ring-1 ring-white/20'
+                    : 'bg-blue-50/80 dark:bg-blue-950/40 border-2 border-blue-400/60 dark:border-blue-500/50 hover:border-blue-500 hover:shadow-[0_8px_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-pointer'
+                }`}
               >
                 <div className="absolute inset-0 flex items-center justify-center">
                   {isVisible ? (
@@ -109,10 +114,26 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                       />
                     )
                   ) : (
-                    <>
-                      <Compass size={40} className="text-blue-500/30 group-hover:text-blue-500/50 transition-colors" />
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15)_0%,transparent_100%)]" />
-                    </>
+                      <>
+                        {/* Si es nivel VERYHARD o EXTREME, mostramos el reverso especial */}
+                        {(difficulty === 'VERYHARD' || difficulty === 'EXTREME') ? (
+                        <div>
+                          {/* Puedes usar una imagen real del reverso si la tienes: */}
+                          <img 
+                            src="public/img/reverso.png"
+                            alt="Reverso"
+                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                          />
+                
+                        </div>
+                  ) : (
+                  /* Reverso estándar para los demás niveles */
+                  <>
+                    <Compass size={40} className="text-blue-500/30 group-hover:text-blue-500/50 transition-colors" />
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.15)_0%,transparent_100%)]" />
+                  </>
+                     )}
+                  </>
                   )}
                 </div>
               </button>

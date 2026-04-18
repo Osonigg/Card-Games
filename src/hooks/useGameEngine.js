@@ -1,5 +1,5 @@
 import { useReducer, useCallback, useEffect } from 'react';
-import { SYMBOL_POOL, DIFFICULTY_CONFIG } from '../constants';
+import { SYMBOL_POOL, CARDS_SPANISH, DIFFICULTY_CONFIG } from '../constants';
 
 function shuffle(arr) {
   const a = [...arr];
@@ -12,12 +12,16 @@ function shuffle(arr) {
 
 function buildDeck(difficulty) {
   const { pairs } = DIFFICULTY_CONFIG[difficulty];
-  const symbols = SYMBOL_POOL.slice(0, pairs);
-  return shuffle([...symbols, ...symbols].map((s, i) => ({
+  const pool = 
+    difficulty === 'EXTREME' ? CARDS_SPANISH : 
+    difficulty === 'VERYHARD' ? CARDS_SPANISH : SYMBOL_POOL;
+  const selectedSymbols = shuffle(pool).slice(0, pairs);
+  
+   // Duplicamos y creamos los objetos de las cartas
+  return shuffle([...selectedSymbols, ...selectedSymbols].map((s, i) => ({
     uid: `${s.id}-${i}`,
     symbolId: s.id,
-    Icon: s.Icon,
-    img: s.img,
+    img: s.img,      // Usará './01-oro.png', etc.
     state: 'hidden',
   })));
 }

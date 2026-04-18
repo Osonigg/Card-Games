@@ -8,7 +8,11 @@ import { t } from '../i18n.js';
 export function Sidebar({ screen, onNewGame, onStatsClick, onExit, onHomeClick, metrics, difficulty, lang, isOpen, onClose, isDark, toggleTheme, setLang }) {
   const tx = t[lang];
   const isPlaying = screen === 'PLAYING' || screen === 'PAUSED';
-  const diffLabel = difficulty === 'EASY' ? tx.easy : difficulty === 'MEDIUM' ? tx.medium : tx.hard;
+  const diffLabel = 
+    difficulty === 'EASY' ? tx.easy : 
+    difficulty === 'MEDIUM' ? tx.medium : 
+    difficulty === 'HARD' ? tx.hard : 
+    difficulty === 'VERYHARD' ? tx.veryHard : tx.extreme; 
 
   const fmt = (s) =>
     `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;

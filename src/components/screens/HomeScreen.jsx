@@ -3,8 +3,8 @@ import { t } from '../../i18n.js';
 
 export function HomeScreen({ onStart, difficulty, setDifficulty, lang }) {
   const tx = t[lang];
-  const difficulties = ['EASY', 'MEDIUM', 'HARD'];
-  const labels = { EASY: tx.easy, MEDIUM: tx.medium, HARD: tx.hard };
+  const difficulties = ['EASY', 'MEDIUM', 'HARD', 'VERYHARD', 'EXTREME'];
+  const labels = { EASY: tx.easy, MEDIUM: tx.medium, HARD: tx.hard, VERYHARD: tx.veryHard, EXTREME: tx.extreme };
 
   return (
     <main className="flex-1 w-full max-w-6xl mx-auto flex flex-col items-center justify-center px-6 md:px-12 py-12 md:py-0 mb-24 md:mb-0 relative z-10 min-h-[calc(100vh-64px)]">
