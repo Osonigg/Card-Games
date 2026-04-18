@@ -90,7 +90,7 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                 key={card.uid}
                 disabled={state.locked || card.state !== 'hidden'}
                 onClick={() => !state.locked && flipCard(card.uid)}
-                className={`aspect-square rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden group
+                className={`aspect-square object-contain rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden group
                   ${difficulty === 'EXTREME' ? 'min-h-[60px] sm:min-h-[80px]' : 'min-h-[100px] sm:min-h-[120px]'}
                   ${isMatched
                     ? 'bg-linear-to-br from-accent to-orange-600 shadow-lg shadow-accent/20 ring-1 ring-white/20'
@@ -99,7 +99,7 @@ export function GameScreen({ difficulty, onVictory, onMetricsChange, lang }) {
                     : 'bg-blue-50/80 dark:bg-blue-950/40 border-2 border-blue-400/60 dark:border-blue-500/50 hover:border-blue-500 hover:shadow-[0_8px_30px_rgba(59,130,246,0.2)] hover:-translate-y-1 cursor-pointer'
                 }`}
               >
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute object-contain inset-0 flex items-center justify-center">
                   {isVisible ? (
                     card.img ? (
                       <img

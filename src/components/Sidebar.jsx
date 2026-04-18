@@ -137,7 +137,11 @@ export function Sidebar({ screen, onNewGame, onStatsClick, onExit, onHomeClick, 
           </button>
         )}
         {screen !== 'HOME' && (
-        <button onClick={onExit} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-outline hover:text-error hover:bg-error/10 transition-colors font-semibold">
+        <button onClick={onExit} className="group relative w-full flex items-center justify-center gap-3 py-4 rounded-2xl 
+             bg-white dark:bg-red-500/10 
+             border-2 border-slate-200 dark:border-red-500/20
+             hover:bg-red-600 hover:border-red-600
+             transition-all duration-300 active:scale-95 shadow-md hover:shadow-xl hover:shadow-red-500/40">
         <LogOut size={16} />
         <span className="text-[11px] uppercase tracking-wider">{tx.exit}</span>
         </button>
